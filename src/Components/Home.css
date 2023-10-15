@@ -1,0 +1,185 @@
+@import url('https://fonts.googleapis.com/css2?family=Young+Serif&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lilita+One&display=swap');
+.body{  
+    margin-top: 0;
+}
+.main {
+    height: 80vh; /* Use viewport height for full screen height */
+    width: 90%;
+    overflow: hidden;
+    align-items: center; /* Center content vertically */
+    position: relative; /* Position relative for absolute positioning inside */
+  }
+  
+  .center {
+    width: 77%;
+    height: 82%;
+    position: absolute;
+    margin-left: 6%;
+    top:50%;
+    transform: translate(0%,-50%);
+    position: relative; /* Position relative for absolute positioning inside */
+  }
+  @keyframes float {
+    0% {
+      transform: translateY(0); /* Start position */
+    }
+    50% {
+      transform: translateY(-10px); /* Float up */
+    }
+    100% {
+      transform: translateY(0); /* Return to start position */
+    }
+  }
+  .trivia h2 {
+    animation: float 2.8s ease-in-out infinite; /* Apply the animation */
+  }
+  .imageContainer {
+    position: absolute;
+    width: 0%;
+    height: 100%;
+    overflow:hidden;
+  }
+  
+  .imageContainer img {
+    overflow: hidden;
+    height: 100%;
+    position: absolute;
+    object-fit: cover;
+    border-radius: 7px;
+    
+  }
+  .btn_width{
+    width:9vw;
+    margin-top: 0.8rem;
+  }
+  .trivia{
+    margin-top: 5%;
+    margin-left:20%;
+    width:70%;
+    background-color: #ffdaab;
+    color:#ae89cc;
+    font-family: 'Young Serif', serif;
+  }
+  .quotes{
+    font-size: 3rem;
+  }
+  .trivia_row{
+    background-color: #ffdddd;
+    margin:0vw 4vw;
+    /* background-color: #bea1d6; */
+  }
+  .text{
+    overflow: hidden;
+    width:83%;
+    height:27%;
+    position: absolute;
+    margin-left: -10%;
+    bottom: 10%;
+    z-index: 999;
+    line-height: 15;
+  }
+
+  .text h1{
+    font-size: 3.6vw;
+    position: absolute;
+    top:80%;
+    font-family: 'Young Serif', serif;
+    text-shadow: 0 0 3px #FF5733, 0 0 4px #8d7966;
+  }
+  .row_one{
+    /* background-color: #d8c8b8; */
+  }
+  .row_one .col-md h1{
+    font-family: 'Pacifico', cursive;
+    font-size: 3.4rem;
+    line-height: -10;
+    color:#493736;
+    margin-top:-4%;
+  }
+  .row_one .col-md p{
+    font-family: 'Pacifico', cursive;
+    font-size: 1.6rem;
+    font-weight:400;
+    margin-top:-4%;
+    color:#493736;
+  }
+  .row_one_img{
+   
+    /* border-radius: 5%; */
+    box-shadow: 6px 6px 5px #a8a39d;
+  }
+  .row_two{
+    /* background-color: #948e99; */
+  }
+  .row_two .col-md p{
+    font-size: 1.6rem;
+    font-weight:400;
+    margin-top:-4%;
+    color:#483078;
+    font-family: 'Pacifico', cursive;
+  }
+  .row_two .col-md h1{
+    color:#301860;
+    font-family: 'Pacifico', cursive;
+    margin-top: -4%;
+  }
+  .row_two .col-md{
+    margin-top: 5%;
+    margin-left: 4%;
+  }
+  .row_two_img{
+    width: 88%;
+    height: 86%;
+    margin-left: 8%;
+    /* border-radius: 5%; */
+    box-shadow: 6px 6px 5px #595b5a;
+  }
+  .row_three{
+    /* background-color: #ae89cc; */
+    height: 80vh;
+    width: auto;
+    
+  }
+  .row_three .col-md-7{
+    height: 40vh;
+    width:69vw;
+    margin-top: 4%;
+  }
+  .row_three .col-md p{
+    font-size: 1.6rem;
+    color:#103432;
+    font-weight:400;
+    font-family: 'Pacifico', cursive;
+  }
+  .row_three .col-md h1{
+    font-size: 2.5rem;
+    color:#103432;
+    font-family: 'Pacifico', cursive;
+  }
+  /* .row_three .col-md-7 h1{
+    font-size: 4rem;
+    text-shadow:4px 3px 3px black;
+    color:#1e88e5;
+    font-family: 'Lilita One', cursive;
+  } */
+  .row_three .col-md-6 img{
+    /* height: 60vh; */
+  }
+  .col_button button{
+    background-color: #204b5e;
+    box-shadow: 4px 3px 3px #e1f5fe;
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+  }
+  .col_button_c button{
+    box-shadow: 4px 3px 3px #4f364a;
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #6e6662;
+  }
+
+  
+
+ 

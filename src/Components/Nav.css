@@ -1,0 +1,14 @@
+.bg{
+    background-color: gray;
+}
+.nav-item{
+    
+    list-style: none;
+}
+.nav-item{
+    display: inline-block;
+}
+.nav-item li p{
+    margin: 1rem;
+    font-size: 1.5rem;
+}
