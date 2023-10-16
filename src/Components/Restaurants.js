@@ -8,20 +8,21 @@ const Restaurants = () => {
   const navigate=useNavigate();
   const [error, setError] = useState('');
   
-  const submitHandler=(e)=>{
-      e.preventDefault();
-      if (input.trim() === ''){
-        setError('Please enter a valid search query.');
-        return; 
-      }
-      setError('');
-      navigate('/search/'+input)
-  }
+  // const submitHandler=(e)=>{
+  //     e.preventDefault();
+  //     if (input.trim() === ''){
+  //       setError('Please enter a valid search query.');
+  //       return; 
+  //     }
+  //     setError('');
+  //     navigate('/displayrestaurant/'+input)
+  // }
   const[searched,setSearch]=useState([]);
   let params=useParams();
   const getSearch=async(name)=>{
     const data=await fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=cb8511f4205346bdb703f47a8fa22172&query=${input}`);
     const recipes=await data.json();
+
     setSearch(recipes.results);
   };
   const searchGeolocation=async(city)=>{
@@ -39,13 +40,13 @@ const Restaurants = () => {
   // useEffect(()=>{
   //   getSearch(params.search);
   // },[params.search]);
-  const cities=["Newton","Northampton","Lawrence","Greenfield","Cambridge",
+  const cities=["Newton","Toronto","Lawrence","Greenfield","Chicago",
                 "Portland","Monroe","Pittsburg","Burlington"]
 
   return (
     <div className="container ">
      <div className="searchBar">
-      <form onSubmit={submitHandler}>
+      {/* <form onSubmit={submitHandler}>
         <input
          className="inputSearch"
           type="text"
@@ -55,14 +56,13 @@ const Restaurants = () => {
 
         <button type="submit" className="submitbtn hovering" ><FaSearch/></button>
         <h5 className="query">{input}</h5>
-      </form>
+      </form> */}
       
       </div>
-
+   
       <div className="container">
         <div className="row row-cols-3 rest ">
       {cities.map((city)=>{
-        
         return<div className="col restCol hovering" onClick={()=>searchGeolocation(city)}>
           <div className="inner "><ImLocation/>{city}</div>
           </div>

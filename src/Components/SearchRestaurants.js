@@ -96,14 +96,14 @@ function SearchRestaurants() {
         <Box as="span" flex='1' textAlign='left' className="restaurant-list" >
         <h3>{item.name}</h3>
 
-        <h4>Rating{item.weighted_rating_value && (parseFloat(item.weighted_rating_value)).toFixed(1)}</h4>
+        <h4>{item.weighted_rating_value && (parseFloat(item.weighted_rating_value)).toFixed(1)}</h4>
         </Box>
         <AccordionIcon />
       </AccordionButton>
       <AccordionPanel pb={4} className="restaurant-inner">
         <div className="rest-city">
           
-        
+
         <h6>{item.address.city}</h6>
         <h6>{item.type}</h6>
         </div>
