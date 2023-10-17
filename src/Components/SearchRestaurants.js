@@ -19,7 +19,7 @@ function SearchRestaurants() {
     setIsLoading(true);
     let lat=localStorage.getItem('lat');
     let lng=localStorage.getItem('lon');
-    const data=await fetch(`https://api.spoonacular.com/food/restaurants/search?apiKey=cb8511f4205346bdb703f47a8fa22172&lat=${lat}&lng=${lng}`);
+    const data=await fetch(`https://api.spoonacular.com/food/restaurants/search?apiKey=fa43cb3d8777455f905954e3d7a9cd52&lat=${lat}&lng=${lng}`);
     setIsLoading(false);
     const recipes=await data.json();
     setSearch(recipes.restaurants);
@@ -32,39 +32,33 @@ function SearchRestaurants() {
     let lng=localStorage.getItem('lon');
     if (preference === 'rating') {
       setIsLoading(true);
-    let highlyRated=await fetch(`https://api.spoonacular.com/food/restaurants/search?apiKey=cb8511f4205346bdb703f47a8fa22172&lat=${lat}&lng=${lng}&sort=rating`);
+    let highlyRated=await fetch(`https://api.spoonacular.com/food/restaurants/search?apiKey=fa43cb3d8777455f905954e3d7a9cd52&lat=${lat}&lng=${lng}&sort=rating`);
     setIsLoading(false);
     const ratingRest=await highlyRated.json();
     setSearch(ratingRest.restaurants);
+    sortedData=ratingRest.restaurants;
     console.log(ratingRest.restaurants)
     } else if (preference === 'distance') {
       setIsLoading(true);
-    let closest=await fetch(`https://api.spoonacular.com/food/restaurants/search?apiKey=cb8511f4205346bdb703f47a8fa22172&lat=${lat}&lng=${lng}&sort=fastest`);
+    let closest=await fetch(`https://api.spoonacular.com/food/restaurants/search?apiKey=fa43cb3d8777455f905954e3d7a9cd52&lat=${lat}&lng=${lng}&sort=fastest`);
     setIsLoading(false);
     const nearer=await closest.json();
     setSearch(nearer.restaurants);
+    sortedData=nearer.restaurants;
     console.log(nearer.restaurants);
     } else if (preference === 'cheapest') {
       setIsLoading(true);
-    let cheapRest=await fetch(`https://api.spoonacular.com/food/restaurants/search?apiKey=cb8511f4205346bdb703f47a8fa22172&lat=${lat}&lng=${lng}&sort=cheapest`);
+    let cheapRest=await fetch(`https://api.spoonacular.com/food/restaurants/search?apiKey=fa43cb3d8777455f905954e3d7a9cd52&lat=${lat}&lng=${lng}&sort=cheapest`);
     setIsLoading(false);
     const cheaper=await cheapRest.json();
     setSearch(cheaper.restaurants);
+    sortedData=cheaper.restaurants;
     console.log(cheaper.restaurants);
     }
     setSortedRestaurants(sortedData);
     setSortPreference(preference);
   };
-  // const sortByTop=async()=>{
-  //   setIsLoading(true);
-  //   let lat=localStorage.getItem('lat');
-  //   let lng=localStorage.getItem('lon');
-  //   let highlyRated=await fetch(`https://api.spoonacular.com/food/restaurants/search?apiKey=fa43cb3d8777455f905954e3d7a9cd52&lat=${lat}&lng=${lng}&sort=rating`);
-  //   setIsLoading(false);
-  //   const ratingRest=await highlyRated.json();
-  //   setSearch(ratingRest.restaurants);
-  //   console.log(ratingRest.restaurants)
-  // }
+
   useEffect(()=>{
     getSearch();
   },[]);
@@ -86,8 +80,9 @@ function SearchRestaurants() {
         </Button>
         </div>
       {isLoading && <CircularProgress className="loader" color='blue.400' isIndeterminate  />}
+   
       <Accordion  allowMultiple>
-        { searched.filter((x)=>{return x.description}).map((item)=>{
+        { searched.map((item)=>{
         
         return(
           <AccordionItem m={4}>
@@ -102,8 +97,6 @@ function SearchRestaurants() {
       </AccordionButton>
       <AccordionPanel pb={4} className="restaurant-inner">
         <div className="rest-city">
-          
-
         <h6>{item.address.city}</h6>
         <h6>{item.type}</h6>
         </div>
@@ -111,7 +104,8 @@ function SearchRestaurants() {
         </AccordionPanel>
         </div>
         </AccordionItem>)
-      })}</Accordion>
+      })}
+      </Accordion> 
       </div>
     </div>
   );

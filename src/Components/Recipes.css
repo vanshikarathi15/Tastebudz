@@ -209,3 +209,27 @@
 .filter-rows Button{
     margin:1vw;
 }
+.searchedItems{
+    width:60vw;
+    text-align: center;
+    background-color: #e7eed0;
+    margin-top: 6%;
+    overflow: hidden;
+    /* display:flex;
+    flex-direction: row; */
+}
+.searchedItems h4{
+    margin-top: 5%;
+    font-size: 2rem;
+    font-family: 'Ubuntu', sans-serif;
+}
+.searchedItems img{
+    max-height: 17vw;
+   padding:3%;
+}
+.sortBar{
+    font-family: 'Onest', sans-serif;
+}
+.headingCuisine{
+    font-family: 'Onest', sans-serif;
+}

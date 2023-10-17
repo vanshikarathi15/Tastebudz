@@ -2,11 +2,14 @@ import React,{useState,useEffect} from 'react';
 import { useNavigate,useParams } from 'react-router-dom';
 import { FaSearch } from 'react-icons/fa';
 import { ImLocation } from 'react-icons/im';
-
+import { CircularProgress, Box ,Button} from '@chakra-ui/react';
 const Restaurants = () => {
   const [input,setInput]=useState('');
   const navigate=useNavigate();
   const [error, setError] = useState('');
+  const initialCities=["Newton","Toronto","Lawrence","Greenfield","Chicago",
+  "Portland","Monroe","Pittsburg","Burlington","Vancouver","Denver","Houston","Boston","Austin","Tucson"]
+
   
   // const submitHandler=(e)=>{
   //     e.preventDefault();
@@ -37,32 +40,37 @@ const Restaurants = () => {
 
     navigate('/searchrestaurants/');
   }
+  const [sortedCities, setSortedCities] = useState([...initialCities]);
+  const [isSorted, setIsSorted] = useState(false);
+
+  const toggleSort = () => {
+    if (isSorted) {
+      setSortedCities([...initialCities]);
+    } else {
+      const sorted = [...initialCities].sort((a, b) => a.localeCompare(b, 'en', { sensitivity: 'base' }));
+      setSortedCities(sorted);
+    }
+    setIsSorted(!isSorted);
+  };
+
   // useEffect(()=>{
   //   getSearch(params.search);
   // },[params.search]);
-  const cities=["Newton","Toronto","Lawrence","Greenfield","Chicago",
-                "Portland","Monroe","Pittsburg","Burlington"]
-
+ 
   return (
     <div className="container ">
-     <div className="searchBar">
-      {/* <form onSubmit={submitHandler}>
-        <input
-         className="inputSearch"
-          type="text"
-          placeholder="Search for restaurants"
-          value={input}
-          onChange={(e)=>setInput(e.target.value)}/>
-
-        <button type="submit" className="submitbtn hovering" ><FaSearch/></button>
-        <h5 className="query">{input}</h5>
-      </form> */}
-      
-      </div>
+    
    
       <div className="container">
+      
+      <div className="sortBar row">
+      <h4 className="col-md-9">We are currently serving in below cities</h4>
+      <Button w="40%" colorScheme='teal' variant='outline' size='sm' onClick={toggleSort} className="col-md hovering">
+           Sort A-Z
+         </Button>
+       </div>
         <div className="row row-cols-3 rest ">
-      {cities.map((city)=>{
+      {sortedCities.map((city)=>{
         return<div className="col restCol hovering" onClick={()=>searchGeolocation(city)}>
           <div className="inner "><ImLocation/>{city}</div>
           </div>
